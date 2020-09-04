@@ -1,0 +1,44 @@
+general: # General options used as "use this options for every directory if not said otherwise in settings per directory"
+  - (opt <future ver>) schedule:
+    repeat:
+      # select one
+      - interval:
+          from: <date>
+          to: <date>
+          every: <interval>
+      - date_list: []
+  - (opt <future ver>) watch: <true/false> # Live watching for changes and acting upon them. Maybe add more elaborated options later.
+  - (opt <future ver>) healthcheck: <true/false> # check after copying whether files are corrupted/not (research? MD5 comparison? There must be a better way)
+  - (opt <future ver> zip: <true/false> # whether program should zip all the files.
+  - copy_to: # copies file/directory to the selected paths/servers/devices
+      paths: []
+      servers: []
+      devices: []
+  - prioritize: # Prioritizes in order, by dir, by file type, by size, etc. All options are optional. Min 1 needs to be written if prioritize is used.
+    # TODO - think how the prioritize should work - the order below is the first proposal.
+      - directories: [<ordered dir names>] # TODO - think what to do with in-depth dirs. ex dir1/dir2/dir3/
+      - types: [<ordered file types>]
+      - size:
+          less_than: <value>
+          more_than: <value>
+          equal: <value>
+          type: <value>  # B, KB, MB, GB - other name than type?
+      - create_date:
+          earlier_than: <value>
+          older_than: <value>
+          equal: <value>
+      - modification_date:
+          earlier_than: <value>
+          older_than: <value>
+          equal: <value>
+      - other ? # Think about other prioritization elements?
+  - filter: # filters out matching files and/or directories
+      - same list of options as in prioritize
+  - comparison: # All comparison options when copying the next "version" and overwriting the already existing one.
+      # TODO - list all comparison options
+      - override_all # Overrides all files
+      - add_missing # adds only missing files
+      - update_by: # e.g. update files older/newer etc.
+
+detail: # TODO - think of better name for this section
+  # Settings per directory e.g. - # TODO - implement in very late stages if at all.
