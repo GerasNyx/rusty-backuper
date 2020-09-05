@@ -1,0 +1,9 @@
+[package]
+name = "rusty-backuper"
+version = "0.1.0"
+authors = ["Tomek Karwowski <to.karwowski@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
